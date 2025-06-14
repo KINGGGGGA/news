@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shaking Image Slideshow</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #ffffff;
+      font-family: sans-serif;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 2rem;
+      font-size: 6vw;
+    }
+    img {
+      width: 80vw;
+      max-width: 300px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: shake 0.5s infinite alternate ease-in-out;
+    }
+    @keyframes shake {
+      0% { transform: rotate(-1deg); }
+      100% { transform: rotate(1deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Click To Play</h1>
+  <img id="randomImage" src="" alt="Shaking 1:1 Image" />
+
+  <script>
+    const images = [
+      'https://via.placeholder.com/300x300?text=Image+1',
+      'https://via.placeholder.com/300x300?text=Image+2',
+      'https://via.placeholder.com/300x300?text=Image+3',
+      'https://via.placeholder.com/300x300?text=Image+4'
+    ];
+
+    let index = 0;
+    const imgElement = document.getElementById('randomImage');
+
+    function showNextImage() {
+      imgElement.src = images[index];
+      index = (index + 1) % images.length;
+    }
+
+    // Show first image immediately
+    showNextImage();
+
+    // Then change image every 3 seconds
+    setInterval(showNextImage, 3000);
+  </script>
+</body>
+</html>
