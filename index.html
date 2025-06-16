@@ -1,72 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shaking Image Slideshow</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      background-color: #ffffff;
-      font-family: sans-serif;
-      text-align: center;
-    }
-    h1 {
-      margin-bottom: 2rem;
-      font-size: 6vw;
-    }
-    img {
-      width: 80vw;
-      max-width: 300px;
-      height: auto;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      animation: shake 0.5s infinite alternate ease-in-out;
-      cursor: pointer;
-    }
-    @keyframes shake {
-      0% { transform: rotate(-1deg); }
-      100% { transform: rotate(1deg); }
-    }
-  </style>
-</head>
-<body>
-  <h1>Click To Play</h1>
-  
-  <!-- Image wrapped in anchor tag -->
-  <a id="imageLink" href="https://www.google.com" target="_blank">
-    <img id="randomImage" src="" alt="Shaking 1:1 Image" />
-  </a>
+<!doctype html>
 
-  <script>
-    const images = [
-      'https://via.placeholder.com/300x300?text=Image+1',
-      'https://via.placeholder.com/300x300?text=Image+2',
-      'https://via.placeholder.com/300x300?text=Image+3',
-      'https://via.placeholder.com/300x300?text=Image+4'
-    ];
 
-    let index = 0;
-    const imgElement = document.getElementById('randomImage');
+    
+    
+    Blogger Popup
+    <style>
+        /* Popup container */
+        .popup-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            display: none; /* Hidden by default */
+        }
 
-    function showNextImage() {
-      imgElement.src = images[index];
-      index = (index + 1) % images.length;
-    }
+        /* Popup content */
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
 
-    // Show first image immediately
-    showNextImage();
+        /* Image styling */
+        .popup-image {
+            max-width: 100%;
+            border-radius: 10px;
+        }
 
-    // Change image every 3 seconds
-    setInterval(showNextImage, 3000);
-  </script>
-</body>
-</html>
+        /* Buttons */
+        .popup-buttons {
+            margin-top: 15px;
+        }
+
+        .popup-buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-accept {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .btn-decline {
+            background-color: #dc3545;
+            color: #fff;
+        }
+    </style>
+
+
+
+    <!-- Popup container -->
+    <div id="popup" class="popup-container">
+        <div class="popup-content">
+            <h2>Welcome to Our Blog!</h2>
+      <a href="https://www.google.com" target="_blank" onclick="hidePopup()">      
+<img class="popup-image" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEihqvN44px9mluQAN0vzStTOxJfcqgXWp6eMcRxhgm3rTZd5XfcnrFd3IETJTCfjXH71eiT9OgCDCXwkcV8VfK1beA7snKmnwAqMJe9T3X260kkNWkKid8731L_Al_WH61rwbGYD1czywajCQ0c32Hs9B4NMsHoyfIX_P6eyYgrfxnLiel5y2YZDQHG6yc/s600/depositphotos_76756387-stock-illustration-video-player-with-black.jpg" alt="Popup Image" />
+      </a>
+
+            <div class="popup-buttons">
+                <button class="btn-accept" onclick="openLink('https://www.google.com')">Download</button>
+                <button class="btn-decline" onclick="openLink('https://www.google.com')">Watch</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show popup when page loads
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('popup').style.display = 'flex';
+            }, 000); // Show popup after 00seconds
+        }
+
+        // Function to open a URL in a new tab and close the popup
+        function openLink(url) {
+            window.open(url, '_blank'); // Open URL in new tab
+            document.getElementById('popup').style.display = 'none'; // Close popup
+        }
+    </script>
+
+
+</!doctype>
